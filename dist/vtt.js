@@ -278,7 +278,13 @@ var ESCAPE = {
   "&gt;": ">",
   "&lrm;": "\u200e",
   "&rlm;": "\u200f",
-  "&nbsp;": "\u00a0"
+  "&nbsp;": "\u00a0",
+  "&Aring;": "\u00c5",
+  "&aring;": "\u00e5",
+  "&Auml;": "\u00c4",
+  "&auml;": "\u00e4",
+  "&Ouml;": "\u00d6",
+  "&ouml;": "\u00f6",
 };
 
 var TAG_NAME = {
@@ -339,7 +345,7 @@ function parseContent(window, input) {
     return ESCAPE[e];
   }
   function unescape(s) {
-    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp);/))) {
+    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp|Aring|aring|Auml|auml|Ouml|ouml);/))) {
       s = s.replace(m[0], unescape1);
     }
     return s;
