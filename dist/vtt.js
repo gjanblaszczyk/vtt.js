@@ -285,6 +285,10 @@ var ESCAPE = {
   "&auml;": "\u00e4",
   "&Ouml;": "\u00d6",
   "&ouml;": "\u00f6",
+  "&AElig;": "\u00c6",
+  "&aelig;": "\u00e6",
+  "&Oslash;": "\u00d8",
+  "&oslash;": "\u00f8",
 };
 
 var TAG_NAME = {
@@ -345,7 +349,7 @@ function parseContent(window, input) {
     return ESCAPE[e];
   }
   function unescape(s) {
-    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp|Aring|aring|Auml|auml|Ouml|ouml);/))) {
+    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp|Aring|aring|Auml|auml|Ouml|ouml|AElig|aelig|Oslash|oslash);/))) {
       s = s.replace(m[0], unescape1);
     }
     return s;
