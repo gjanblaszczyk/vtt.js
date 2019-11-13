@@ -272,7 +272,7 @@ function parseCue(input, cue, regionList) {
   consumeCueSettings(input, cue);
 }
 
-var DIV_ELEMENT = window.document.createElement("div");
+var TEXTAREA_ELEMENT = window.document.createElement("textarea");
 
 var ESCAPE = {
   "&amp;": "&",
@@ -344,9 +344,9 @@ function parseContent(window, input) {
     while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp);/))) {
       s = s.replace(m[0], unescape1);
     }
-    DIV_ELEMENT.innerHTML = s;
-    s = DIV_ELEMENT.textContent;
-    DIV_ELEMENT.textContent = "";
+    TEXTAREA_ELEMENT.innerHTML = s;
+    s = TEXTAREA_ELEMENT.textContent;
+    TEXTAREA_ELEMENT.textContent = "";
     return s;
   }
 
