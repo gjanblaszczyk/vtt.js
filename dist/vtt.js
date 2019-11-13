@@ -272,23 +272,15 @@ function parseCue(input, cue, regionList) {
   consumeCueSettings(input, cue);
 }
 
+var DIV_ELEMENT = window.document.createElement("div");
+
 var ESCAPE = {
   "&amp;": "&",
   "&lt;": "<",
   "&gt;": ">",
   "&lrm;": "\u200e",
   "&rlm;": "\u200f",
-  "&nbsp;": "\u00a0",
-  "&Aring;": "\u00c5",
-  "&aring;": "\u00e5",
-  "&Auml;": "\u00c4",
-  "&auml;": "\u00e4",
-  "&Ouml;": "\u00d6",
-  "&ouml;": "\u00f6",
-  "&AElig;": "\u00c6",
-  "&aelig;": "\u00e6",
-  "&Oslash;": "\u00d8",
-  "&oslash;": "\u00f8",
+  "&nbsp;": "\u00a0"
 };
 
 var TAG_NAME = {
@@ -349,9 +341,12 @@ function parseContent(window, input) {
     return ESCAPE[e];
   }
   function unescape(s) {
-    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp|Aring|aring|Auml|auml|Ouml|ouml|AElig|aelig|Oslash|oslash);/))) {
+    while ((m = s.match(/&(amp|lt|gt|lrm|rlm|nbsp);/))) {
       s = s.replace(m[0], unescape1);
     }
+    DIV_ELEMENT.innerHTML = s;
+    s = DIV_ELEMENT.textContent;
+    DIV_ELEMENT.textContent = "";
     return s;
   }
 
